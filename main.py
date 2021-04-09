@@ -1,5 +1,5 @@
 """
-  sequence de commentaires avec triple quoye
+  sequence de commentaires avec triple quote
 
 type(var) ==> type de la variable
   str, int, float, boolean
