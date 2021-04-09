@@ -1,5 +1,5 @@
 """
-  sequence de commentaires avec triple quote
+  sequence de commentaires avec triple quote 12H00
 
 type(var) ==> type de la variable
   str, int, float, boolean
