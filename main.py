@@ -95,6 +95,8 @@ age_num2 = saisie_age()
 afficher(nom2, age_num2)
 """
 
+nom=""
+age=""
 NB_PERSONNE = 3                    ## convention : constante immuable en MAJ
 
 for i in range(0, NB_PERSONNE):    ## 0 Inclus  NB Exclus
@@ -106,7 +108,7 @@ for i in range(0, NB_PERSONNE):    ## 0 Inclus  NB Exclus
 
 afficher(nom, age, 1.72)
 
-## Chaine formatée
+## Chaine formatée 
 print ("************* formattage ***********")
 print("je suis " + nom + " et j'ai l'age de " + str(age) + " ans")
 
@@ -173,21 +175,19 @@ if rep == "O" or rep == "o":
 
     turtle.done()
 
-print ("fin turtle")
+print("fin turtle")
 
 # ==================================================================================================================
 #     nombre magique a deviner
 # exercice nbre_magique   maj pour test git 17 hres
 
 # import random
-rep = input ("executer Nbre magique O/N ")
+rep = input("executer Nbre magique O/N ")
 if rep == "O" or rep == "o":
-
     MINI = 1
     MAXI = 20
     ESSAI = 5
     NBR_CHERCHE = random.randint(MINI, MAXI)
-
 
     def saisie(mini, maxi):
         nb = 0
@@ -209,9 +209,10 @@ if rep == "O" or rep == "o":
             break
         return nb
 
+    print(f"Nbre magique , vous avez droit à  {ESSAI} essais")
 
-    print(f"Nbre magique , vous avez droit a  {ESSAI} essais")
-
+    # ajout 1
+    # ajout comm 2
     essai = 1
 
     while True:
@@ -258,8 +259,4 @@ if rep == "O" or rep == "o":
         print("Perdu !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
         print(f"il fallait trouver {NBR_CHERCHE}")
 
-print ("FIN nbre magique")
-
-
-
-
+print("FIN nbre magique")
