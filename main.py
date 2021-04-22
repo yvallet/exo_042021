@@ -38,6 +38,15 @@ def saisie_age(v_nom):
 
 
 def saisie_nom(mini, maxi):
+    """
+    saisie d une zone alfa
+    Args:
+        mini: 0=pas obligatoire >0 obligatoire
+        maxi: nbre maxi de caracteres
+
+    Returns: le zone saisie
+
+    """
     long = 0
     alpha = ""
     while long == 0:
@@ -58,10 +67,32 @@ def saisie_nom(mini, maxi):
             long = 0
     return alpha
 
+def saisie(mini, maxi):
+    nb = 0
+    while nb == 0:
+    # nbre = input ("saisir un nbre entre " + str(mini) + " et " + str(maxi) + " : ")
+        nbre = input(f"saisir un nbre entre {mini}  et {maxi}  : ")
+        try:
+            nb = int(nbre)
+        except ValueError:
+            print("valeur invalide")
+            nb = 0
+
+        if nb < mini or nb > maxi:
+            # print("SVP un nbre entre " + str(mini) + " et " + str(maxi) + " : ")
+            print(f"SVP un nbre entre {mini} et {maxi} : ")
+
+            continue
+        break
+    return nb
+
+
 #                         Param optionnel , si pas garni ==> 0,  si garni=> normal
-def afficher( xnom, xage, taille=0):
+
+
+def afficher(xnom, xage, taille=0):
     print("je suis " + xnom + " et j'ai l'age canonique de " + str(xage) + " ans")
-    print("l annee prochaine vous aurez : " + str(xage+1))
+    print("l annee prochaine vous aurez : " + str(xage + 1))
     print()
     majeur = xage >= 18
     print("variable majeur : ", majeur)
@@ -69,7 +100,7 @@ def afficher( xnom, xage, taille=0):
         print("vous etes BEBE")
     elif 10 < xage < 15:
         print("Adolecent")
-    elif xage <=10:
+    elif xage <= 10:
         print("un enfant !!!")
     elif xage == 17:
         print("bientot majeur")
@@ -85,35 +116,48 @@ def afficher( xnom, xage, taille=0):
     if not taille == 0:
         print("taille : " + str(taille))
 
+
 """
 nom1 = saisie_nom(0, 10)
-age_num1 = saisie_age()
 afficher(nom1, age_num1)
+age_num1 = saisie_age()
 
 nom2 = saisie_nom(0, 10)
 age_num2 = saisie_age()
 afficher(nom2, age_num2)
 """
+test_var = 0
+# modif ==> vert jusqu au commit !!!!!!!
+# ===
 
-nom=""
-age=""
-NB_PERSONNE = 3                    ## convention : constante immuable en MAJ
+var = 0  ## pour test CTL B
 
-for i in range(0, NB_PERSONNE):    ## 0 Inclus  NB Exclus
-    nom = "personne No " + str(i+1)
+nom = ""
+age = ""
+NB_PERSONNE = 3  ## convention : constante immuable en MAJ Modif!!
+
+for i in range(0, NB_PERSONNE):  ## 0 Inclus  NB Exclus
+
+    # nom = "personne No " + str(i + 1)
+    nom=saisie_nom(1,30)                 ## View ==> quick doct = les docstring associés
+                                         ##          quick definition = la fonction    Shift F1 = Aide externe
     age = saisie_age(nom)
     afficher(nom, age)
 
-## avec une taille
+# avec une taille
 
 afficher(nom, age, 1.72)
 
-## Chaine formatée 
-print ("************* formattage ***********")
+# Chaine formatée
+print("************* formattage ***********")
 print("je suis " + nom + " et j'ai l'age de " + str(age) + " ans")
 
-print (f"je suis {nom} et j'ai l'age de {age} ans")
-print ("je suis %s et j'ai L'age de %s ans" % (nom, age))
+print(f"je suis {nom} et j'ai l'age de {age} ans")
+print("je suis %s et j'ai L'age de %s ans" % (nom, age))
+
+test_var = 1
+
+var2 = var + 1
 
 ##texte multi-ligne
 print("""
@@ -125,9 +169,9 @@ ligne 1
 print("fin test1  age ")
 # =====================================================================================================================
 #    exo tortue
-#import turtle
+# import turtle
 
-rep = input ("executer turtle O/N ")
+rep = input("executer turtle O/N ")
 
 if rep == "O" or rep == "o":
 
@@ -177,37 +221,22 @@ if rep == "O" or rep == "o":
 
 print("fin turtle")
 
-# ==================================================================================================================
+# ===========================================================================================================
 #     nombre magique a deviner
 # exercice nbre_magique   maj pour test git 17 hres
 
+var2 = var + 1
+
 # import random
+MINI = 1
+MAXI = 20
+ESSAI = 5
+NBR_CHERCHE = random.randint(MINI, MAXI)
+
 rep = input("executer Nbre magique O/N ")
 if rep == "O" or rep == "o":
-    MINI = 1
-    MAXI = 20
-    ESSAI = 5
-    NBR_CHERCHE = random.randint(MINI, MAXI)
 
-    def saisie(mini, maxi):
-        nb = 0
-        while nb == 0:
-            # nbre = input ("saisir un nbre entre " + str(mini) + " et " + str(maxi) + " : ")
-            nbre = input(f"saisir un nbre entre {mini}  et {maxi}  : ")
 
-            try:
-                nb = int(nbre)
-            except ValueError:
-                print("valeur invalide")
-                nb = 0
-
-            if nb < mini or nb > maxi:
-                # print("SVP un nbre entre " + str(mini) + " et " + str(maxi) + " : ")
-                print(f"SVP un nbre entre {mini} et {maxi} : ")
-
-                continue
-            break
-        return nb
 
     print(f"Nbre magique , vous avez droit à  {ESSAI} essais")
 
@@ -235,28 +264,30 @@ if rep == "O" or rep == "o":
             else:
                 print("Trop petit")
 
-    # Le meme avec boucle FOR
-    print("=============== BOUCLE =================")
-    gagne = False
-    essai = 1
+# Le meme avec boucle FOR
+print("=============== BOUCLE =================")
+gagne = False
+essai = 1
 
-    for i in range(0, ESSAI):
-        print(f"essai numero {essai}/{ESSAI}")
-        nbre_saisi = saisie(MINI, MAXI)
-        if nbre_saisi == NBR_CHERCHE:
-            gagne = True
-            break
+for i in range(0, ESSAI):
+    print(f"essai numero {essai}/{ESSAI}")
+    nbre_saisi = saisie(MINI, MAXI)
+    if nbre_saisi == NBR_CHERCHE:
+        gagne = True
+        break
 
-        essai += 1
-        if nbre_saisi > NBR_CHERCHE:
-            print("Trop Grand")
-        else:
-            print("Trop petit")
-
-    if gagne:
-        print("Gagne !!!!!!!!!!!!")
+    essai += 1
+    if nbre_saisi > NBR_CHERCHE:
+        print("Trop Grand")
     else:
-        print("Perdu !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-        print(f"il fallait trouver {NBR_CHERCHE}")
+        print("Trop petit")
+
+if gagne:
+    print("Gagne !!!!!!!!!!!!")
+else:
+    print("Perdu !!!!!!!!!!!!!!!MODIF!!!!!!!!!!!!!!!!!")
+    print(f"il fallait trouver {NBR_CHERCHE}")
 
 print("FIN nbre magique")
+
+
